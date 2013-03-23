@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# GIT Updates for Social-Engineer Toolkit, Metasploit, and w3af
+# GIT Updates for Social-Engineer Toolkit, Metasploit, w3af, and Recon-ng
 cd /usr/local/opt/set && sudo git pull
 cd /usr/local/opt/msf && sudo git pull
 cd /usr/local/opt/w3af && sudo git pull
