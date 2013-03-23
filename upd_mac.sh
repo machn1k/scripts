@@ -12,6 +12,8 @@ sudo gem update
 # MacPorts
 sudo port selfupdate
 sudo port upgrade outdated
+sudo port -f clean --all installed  #all
+sudo port -f uninstall inactive
 
 # Apple Software Update
 sudo softwareupdate -iva
