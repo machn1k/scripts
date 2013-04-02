@@ -1,0 +1,45 @@
+##################### BASH PROFILE #############################
+# www.understudy.net/custom.html#table1
+function prompt
+{
+# \[ sets the charcters to not over write so the line wraps correctly
+   ##local RED="\[\e[0;31m\]"; local BLACK="\[\e[1;30m\]"; local WHITE="\[\e[0;0m\]"; 
+   ##local GREEN="\[\e[0;32m\]"; local PURPLE="\e[0;35m\]"; local PURPLEB="\e[1;35m\]"; 
+   ##local RESET="\[\e[0m\]"
+   export PS1="\[\033[0m\][\[\033[31m\] \u\[\033[0;41m\]@\h\[\033[0m\] ] \$ " 
+}
+prompt
+
+# Terminal Colors: For Dark Theme
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+# Terminal Colors: For Light Theme
+#export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# History 
+HISTCONTROL=ignoredups:ignorespace
+
+# Compilier options
+export ARCHFLAGS="-arch x86_64"
+export CC=/usr/bin/gcc-4.2
+ 
+# Alias
+alias svnkeywords='svn propset svn:keywords '\''Rev Revision Id Header'\'''
+alias l='ls -l'
+alias ll='ls -la'
+alias cl='clear'
+alias .1='cd ..'
+alias pingg='ping -c 3 www.google.com'
+
+# Commands
+alias sha1='openssl sha1'
+
+# Directories
+
+# MacPorts Installer addition on 2013-03-11_at_12:52:51: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Adapted PATH environment variable for use with MacPorts.
+
+FIG='figlet -f block'
+$FIG $(whoami)
+
