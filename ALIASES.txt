@@ -1,0 +1,45 @@
+# GENERAL COMMANDS
+alias l='ls -l'
+alias ll='ls -la'
+alias l.='ls -d .*'
+alias cl='clear'
+alias h='history'
+alias j='jobs -l'
+alias ..='cd ..'
+alias vi='vim'
+alias svi='sudo vi'
+alias rstart='sudo shutdown -r now'
+
+# SCRIPTS
+alias update='sudo ~/GitHub/scripts/update_osx.sh'
+alias fhead='~/GitHub/scripts/fhead.sh'
+alias chmac='sudo ~/GitHub/scripts/chmac.sh'
+alias comphash='~/GitHub/scripts/comphash.sh'
+
+# OTHER COMMANDS
+alias sha1='openssl sha1'
+alias ping='ping -c 3'
+alias webhead='curl -I'
+
+# SYSINFO
+alias meminfo='free -m -l -t'
+alias cpuinfo='lscpu'
+##	TOP MEM EATING PROCESSES
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+##	TOP CPU EATING PROCESSES
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+## get GPU ram on desktop / laptop## 
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+# NETSTAT
+alias listen='netstat -l'
+alias ports='netstat -tulanp'
+alias routing='netstat -r'
+alias runwhere='netstat -ap | grep'
+alias nterfaces='netstat -i'
+
+# SSH
+alias btr='ssh -2 usr@ip -p 300'
+
