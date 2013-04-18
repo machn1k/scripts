@@ -1,5 +1,4 @@
 ##################### BASH PROFILE #############################
-# www.understudy.net/custom.html#table1
 function prompt
 {
 # \[ sets the charcters to not over write so the line wraps correctly
@@ -27,18 +26,36 @@ export CC=/usr/bin/gcc-4.2
 alias svnkeywords='svn propset svn:keywords '\''Rev Revision Id Header'\'''
 alias l='ls -l'
 alias ll='ls -la'
+alias l.='ls -d .*'
 alias cl='clear'
-alias .1='cd ..'
-alias pingg='ping -c 3 www.google.com'
+alias ..='cd ..'
+alias h='history'
 
-# Commands
+# Updates
+alias update='sudo apt-get update --yes && sudo apt-get upgrade --yes'
+alias clean='sudo apt-get autoclean --yes && sudo apt-get autoremove --yes'
+
+alias ping='ping -c 3'
+alias header='curl -I'
+alias vi='vim'
+alias svi='sudo vi'
 alias sha1='openssl sha1'
+alias md5='openssl md5'
+
+# Netstat
+alias listen='netstat -l'
+alias routing='netstat -r'
+alias runwhere='netstat -ap | grep'
+alias nterfaces='netstat -i'
 
 # Directories
 
 # MacPorts Installer addition on 2013-03-11_at_12:52:51: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Adapted PATH environment variable for use with MacPorts.
+
+# Load RVM into a shell session *as a function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 FIG='figlet -f block'
 $FIG $(whoami)
