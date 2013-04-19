@@ -111,7 +111,7 @@ installPackages() {
 	sudo apt-get install ubuntu-wallpapers-karmic ubuntu-wallpapers-lucid ubuntu-wallpapers-maverick ubuntu-wallpapers-natty ubuntu-wallpapers-oneiric ubuntu-wallpapers-precise
 
 	echo "DOING: apt-get"
-	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dsniff ettercap-graphical foremost gimp git hping3 htop hydra-gtk john medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
+	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dsniff ettercap-graphical foremost gimp git glade hping3 htop hydra-gtk john macchanger-gtk medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
 	
 	# Download the egg:
 	# https://pypi.python.org/packages/source/s/setuptools/
