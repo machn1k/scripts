@@ -47,10 +47,11 @@ alias nterfaces='netstat -i'
 
 ###############################################################################
 # SCRIPTS
-alias update='sudo ~/GitHub/scripts/update_osx.sh'
-alias fhead='~/GitHub/scripts/fhead.sh'
-alias chmac='sudo ~/GitHub/scripts/chmac.sh'
-alias comphash='~/GitHub/scripts/comphash.sh'
+alias update='sudo ~/GitHub/scripts/updateOSX'
+alias fhead='~/GitHub/scripts/fileHdr'
+alias chmac='sudo ~/GitHub/scripts/macChange'
+alias comphash='~/GitHub/scripts/compuHash'
+alias findHash='~/GitHub/scripts/findHash'
 
 # SSH
 alias btr='ssh -2 usr@ip -p 300'

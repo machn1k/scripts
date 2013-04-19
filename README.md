@@ -2,11 +2,12 @@
 =======
 
 <<<<<<< HEAD
-Automation of sorts.  
+
+Bash and Python.  
 
 Linux & OS X.  These make my life easier, sometimes more complicated.
 =======
-# PrintASCIItbl.sh
+# asciiTbl
 Prints a colored ASCII table.  Usefule for configurations.
 
 # bash_configs ################################################
@@ -23,48 +24,48 @@ Sample .bash_profile
 # bash_configs/vimrc
 Sample .vimrc file
 
-# comphash.sh
+# compuHash
 Compares checksums between two files.
 
-# fhead.sh
+# fileHdr
 File header/footer
 
 # figlet_name
 Figlet is cool.
 
-# framework-wrappers
+# framework_wrappers
 Wrapper scripts for /usr/local/bin/
 
-# hashf.sh
+# findHash
 Grep for hash values in a vile.
 
-# install_linux
+# insLinux
 Default packages, settings and information for a base Linux install.
 
 # listener.py
 Backdoor Listener.
 
-# macchange.sh
+# macChange
 Changes one's MAC address.
 
-# mysql_bypass.py
+# bypassSQL
 Previous mysql exploit.
 
 # ncat_server_scan
 Scans the listed servers in the .txt file.
 
-# nm_scan.sh
+# nmapScan
 NOT DONE. So it's a list of commands right now.
 
-# osx_mods.sh
+# osxMods
 Modifications to OS X.
 
-# unarch.sh
+# unArchive
 Unarchive files without thinking.  Not done yet either.
 
-# update_keys.sh
+# updateKeys
 Updating keys.
 
-# update_osx.sh
+# updateOSX
 Updating OS X.
 >>>>>>> Changes
