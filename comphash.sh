@@ -22,6 +22,6 @@ fi
 if [ $fs1 == $fs2 ]; then
    printf "\nMATCH for SHA1$delm\nFile 01: $fs1\nFile 02: $fs2\n"
 else
-   printf "\nNO MATCH for MD5\nFile 01: $fs1\nFile 02: $fs2\n"
+   printf "\nNO MATCH for SHA1\nFile 01: $fs1\nFile 02: $fs2\n"
 fi
 
