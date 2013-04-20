@@ -1,10 +1,7 @@
-##################### BASH PROFILE #############################
+### BASH_PROFILE ###############################################################
 function prompt
 {
 # \[ sets the charcters to not over write so the line wraps correctly
-   ##local RED="\[\e[0;31m\]"; local BLACK="\[\e[1;30m\]"; local WHITE="\[\e[0;0m\]"; 
-   ##local GREEN="\[\e[0;32m\]"; local PURPLE="\e[0;35m\]"; local PURPLEB="\e[1;35m\]"; 
-   ##local RESET="\[\e[0m\]"
    export PS1="\[\033[0m\][\[\033[31m\] \u\[\033[0;41m\]@\h\[\033[0m\] ] \$ " 
 }
 prompt
@@ -12,6 +9,7 @@ prompt
 # Terminal Colors: For Dark Theme
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
 # Terminal Colors: For Light Theme
 #export LSCOLORS=ExFxBxDxCxegedabagacad
 
@@ -19,44 +17,31 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 HISTCONTROL=ignoredups:ignorespace
 
 # Compilier options
-export ARCHFLAGS="-arch x86_64"
-export CC=/usr/bin/gcc-4.2
- 
-# Alias
-alias svnkeywords='svn propset svn:keywords '\''Rev Revision Id Header'\'''
-alias l='ls -l'
-alias ll='ls -la'
-alias l.='ls -d .*'
-alias cl='clear'
-alias ..='cd ..'
-alias h='history'
-
-# Updates
-alias update='sudo apt-get update --yes && sudo apt-get upgrade --yes'
-alias clean='sudo apt-get autoclean --yes && sudo apt-get autoremove --yes'
-
-alias ping='ping -c 3'
-alias header='curl -I'
-alias vi='vim'
-alias svi='sudo vi'
-alias sha1='openssl sha1'
-alias md5='openssl md5'
-
-# Netstat
-alias listen='netstat -l'
-alias routing='netstat -r'
-alias runwhere='netstat -ap | grep'
-alias nterfaces='netstat -i'
-
-# Directories
-
-# MacPorts Installer addition on 2013-03-11_at_12:52:51: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Adapted PATH environment variable for use with MacPorts.
+#export ARCHFLAGS="-arch x86_64"
+#export CC=/usr/bin/gcc-4.2
 
 # Load RVM into a shell session *as a function
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source ~/.profile
+PATH=$HOME/.rvm/bin:$PATH
 
-FIG='figlet -f block'
-$FIG $(whoami)
+#> CONTENTS OF PROFILE
+#>if [ -s "$HOME/.rvmrc" ]; then
+#>    source "$HOME/.rvmrc"
+#>fi 
+#># to have $rvm_path defined if set
+#>if [ -s "${rvm_path-$HOME/.rvm}/scripts/rvm" ]; then
+#>    source "${rvm_path-$HOME/.rvm}/scripts/rvm"
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
+
+# Aliases
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+
+# .bashrc
+if [ -f ~/.bashrc ]; then
+        source ~/.bashrc
+fi
 

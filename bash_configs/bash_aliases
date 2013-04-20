@@ -1,8 +1,13 @@
-###############################################################################
-# GENERAL COMMANDS
+### BASH_ALIASES ###############################################################
+# LISTING
 alias l='ls -l'
 alias ll='ls -la'
 alias l.='ls -d .*'
+
+# LINUX COLORIZED
+#alias ls='ls --color=auto'
+#alias ll='ls -l --color=auto'
+#alias ll='ls -la --color=auto'
 
 # Shortcuts
 alias cl='clear'
@@ -13,10 +18,11 @@ alias vi='vim'
 alias svi='sudo vi'
 
 # Power
-alias rstart='sudo shutdown -r now'
-alias pwr='sudo poweroff'
+alias restart='sudo shutdown -r now'
+alias power='sudo poweroff'
 
 alias sha1='openssl sha1'
+alias md5='openssl md5'
 alias ping='ping -c 3'
 alias webhead='curl -I'
 alias mount='mount |column -t'
@@ -54,15 +60,10 @@ alias comphash='~/GitHub/scripts/compuHash'
 alias findHash='~/GitHub/scripts/findHash'
 
 # SSH
-alias btr='ssh -2 usr@ip -p 300'
+alias rem_hst='ssh -2 usr@ip -p 300'
 
 ###############################################################################
-# Linux Specific
-### Colorize outputs
-alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias ll='ls -la --color=auto'
-
+# UPDATES
 alias update='sudo apt-get update --yes && sudo apt-get upgrade --yes'
 alias clean='sudo apt-get auto clean --yes && sudo apt-get auto remove --yes'
 
@@ -73,4 +74,4 @@ alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
 alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
 alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
-alias firewall=iptlist
+alias firewall='iptlist'
