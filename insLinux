@@ -111,8 +111,13 @@ installPackages() {
 	sudo apt-get install ubuntu-wallpapers-karmic ubuntu-wallpapers-lucid ubuntu-wallpapers-maverick ubuntu-wallpapers-natty ubuntu-wallpapers-oneiric ubuntu-wallpapers-precise
 
 	echo "DOING: apt-get"
-	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dsniff ettercap-graphical foremost gimp git glade hping3 htop hydra-gtk john macchanger-gtk medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
+	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dhcp3-server dsniff ettercap-graphical foremost gimp git glade hping3 htop hydra-gtk john macchanger-gtk medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
 	
+	# JustSniffer :: http://justniffer.sourceforge.net/
+	sudo add-apt-repository ppa:oreste-notelli/ppa 
+	sudo apt-get update
+	sudo apt-get install justniffer --yes
+
 	# Download the egg:
 	# https://pypi.python.org/packages/source/s/setuptools/
 	sudo chmod +x ~/Downloads/*.egg && sudo ./*.egg
@@ -158,6 +163,24 @@ installPackages() {
 	#tar xzf ~/Downloads/aircrack-ng-1.1.tar.gz
 	#cd aircrack*
 	#sudo make && make install
+
+	### Other WGETs
+	# Slowloris :: http://ha.ckers.org/slowloris/
+	### Dependencies
+	#### http://perldoc.perl.org/IO/Socket/INET.html
+	#### http://search.cpan.org/~behroozi/IO-Socket-SSL-0.97/
+	#### http://search.cpan.org/~jv/Getopt-Long-2.38/
+	wget http://ha.ckers.org/slowloris/slowloris.pl -O ~/Downloads/slowloris.pl
+	
+	# hulk :: http://packetstormsecurity.com/files/download/112856/hulk.zip
+	wget http://dl.packetstormsecurity.net/DoS/hulk.zip -O ~/Downloads/hulk.zip
+
+	# zaproxy
+	wget http://zaproxy.googlecode.com/files/ZAP_2.1.0_Linux.tar.gz -O ~/Downloads/zaproxy.tar.gz
+	
+	# hostapd
+	wget http://w1.fi/releases/hostapd-x.y.z.tar.gz -O ~/Downloads/hostapd.tar.gz
+	# http://linuxwireless.org/en/users/Documentation/hostapd
 
 	########################################## GIT ###################################################
 	echo "DOING: Git"
@@ -306,6 +329,9 @@ nfo() {
 
 	TESTING
 	echo -e "$ ssh $(whoami)@localhost" | less
+
+	SIMPLE PYTHON SERVER FOR TESTING
+	$ python -m SimpleHTTPServer
 
 	$sp
 	# Disable IPv6: Requires Reboot
