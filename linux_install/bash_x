@@ -1,0 +1,29 @@
+#!/bin/bash
+
+u=$1
+
+hp() {
+    echo -e "Copy bash_aliases to root/user.
+
+    USAGE:
+    -h		Help
+    -u		User: More aliases, scripts, etc
+    -r		Root: Less aliases
+    "
+}
+
+if [ $u = "-u" ]; then
+    if [ -f bash_aliases ]; then
+       echo -e 'bash_aliases'
+       #cp bash_aliases ~/.bash_aliases
+     fi
+elif [ $u = "-r" ]; then
+    if [ -f bash_aliases_root ]; then
+       echo -e 'bash_aliases_root'
+       #sudo cp bash_aliases /root/.bash_aliases
+    fi
+elif [ $u = "-h" ]; then
+    hp
+else
+    echo 'Specify an option (user/root)'
+fi

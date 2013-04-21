@@ -1,0 +1,203 @@
+#!/bin/bash
+
+arg=$1
+
+# Developer Tools
+aptDev() {
+
+	sudo apt-get install anjuta glade devhelp --yes
+	sudo apt-get install gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse --yes
+	# Python interface
+	sudo apt-get install python python-gobject
+	# C and C Documentation
+	sudo apt-get install libgtk-3-dev libgstreamer0.10-dev libclutter-1.0-dev libwebkitgtk-3.0-dev libgda-5.0-dev
+	sudo apt-get install libgtk-3-doc gstreamer0.10-doc libclutter-1.0-doc libgda-5.0-doc
+}
+
+# Wallpapers
+aptWall(){
+
+	sudo apt-get install ubuntu-wallpapers-karmic ubuntu-wallpapers-lucid ubuntu-wallpapers-maverick ubuntu-wallpapers-natty ubuntu-wallpapers-oneiric ubuntu-wallpapers-precise --yes
+}
+
+# General and Hacking tools
+aptTools() {
+
+	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dhcp3-server dsniff ettercap-graphical foremost gimp git hping3 htop hydra-gtk john macchanger-gtk medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
+
+	# JustSniffer :: http://justniffer.sourceforge.net/
+	sudo add-apt-repository ppa:oreste-notelli/ppa 
+	sudo apt-get update
+	sudo apt-get install justniffer --yes
+}
+
+# Updates
+aptUpdate(){
+
+	sudo apt-get update --yes && sudo apt-get upgrade --yes
+	sudo apt-get autoclean --yes && sudo apt-get autoremove --yes
+}
+
+deps(){
+
+	echo -e "
+	Dependencies :: Slowloris @ http://ha.ckers.org/slowloris/
+	http://perldoc.perl.org/IO/Socket/INET.html
+	http://search.cpan.org/~behroozi/IO-Socket-SSL-0.97/
+	http://search.cpan.org/~jv/Getopt-Long-2.38/
+
+	Hulk :: http://packetstormsecurity.com/files/download/112856/hulk.zip
+
+	Zaproxy :: http://code.google.com/p/zaproxy/
+
+	Hostapd :: http://linuxwireless.org/en/users/Documentation/hostapd
+
+	Python SetupTools @ https://pypi.python.org/packages/source/s/setuptools/
+	# Download 'setup.egg'
+	$ sudo chmod +x ~/Downloads/*.egg && sudo ./*.egg
+
+	PyCrypto @ https://pypi.python.org/pypi/pycrypto
+	$ tar xzf pycrypto-2.6.tar.gz && cd pycrypto-*
+	$ sudo python setup.py install
+	
+	# Armitage @ http://www.fastandeasyhacking.com/download
+	#extract, move to /opt
+	
+
+	"
+}
+
+# GIT
+git() {
+
+	# Social Engineer Toolkit
+	echo "DOING: set"
+	sudo git clone https://github.com/trustedsec/social-engineer-toolkit.git /opt/set
+	sudo chmod +x /opt/set/set
+	sudo echo -e "$set_scpt" >> $pth/set-console
+	sudo chmod +x $pth/set-console
+
+	# SQLmap
+	echo "DOING: SQLmap"
+	sudo git clone https://github.com/sqlmapproject/sqlmap.git /opt/sqlmap
+	sudo chmod +x /opt/sqlmap/sqlmap.py 
+	sudo ln -s /opt/sqlmap/sqlmap.py $pth/sqlmap
+
+	# Recon-ng
+	echo "DOING: recon-ng"
+	sudo git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git /opt/recon-ng
+	sudo ln -s /opt/recon-ng/recon-ng.py $pth/recon-ng
+	sudo echo -e "$recon_scpt" >> $pth/recon-ng
+	sudo chmod +x $pth/recon-ng
+
+	#BeEF
+	sudo gem install bundler
+	#***** MySQL "root" user's password: [here]
+	sudo apt-get install libsqlite3-dev --yes
+	sudo apt-get install sqlite3 sqlite3-doc build-essential git-core curl mysql-client mysql-server libmysql-ruby libmysqlclient-dev libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libxml2-dev libxslt1-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison libffi-dev --yes
+
+	bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+	echo '[[ -s "/home/`$(whoami)`/.rvm/scripts/rvm" ]] && source "/home/`$(whoami)`/.rvm/scripts/rvm"' >> ~/.bashrc
+	echo 'source ~/.bashrc' >> ~/.bashrc
+
+	type rvm | head -1
+	rvm install 1.9.3
+	rvm use --default 1.9.3
+	rvm 1.9.3 do gem install mysql2
+	rvm use system
+
+	sudo git clone https://github.com/beefproject/beef.git /opt/BeEF
+	sudo chmod +x /opt/BeEF/beef && sudo ln -s /opt/BeEF/beef $pth/beef
+	cd /opt/BeEF/ && bundle install
+	# If an error pops up for 'Gemfile.lock', vim it and provide permissions
+	# troubleshoot "do_sqlite3" with gem install do_sqlite3
+	
+} # End GIT
+
+machn1k() {
+
+	# Scripts
+	echo "DOING: machn1k scripts"
+	sudo git clone https://github.com/machn1k/scripts.git ~/GitHub/machn1k
+
+}
+
+msf() {
+
+	# Install Metasploit
+	echo "DOING: metasploit"
+	sudo chmod +x ~/Downloads/metasploit*
+	sudo sh ~/Downloads/metasploit*
+}
+
+
+other() {
+
+	# Reg-Ripper
+	echo "DOING: RegRipper"
+	sudo wget http://winforensicaanalysis.googlecode.com/files/RR.zip -O ~/Downloads/RegRipper.zip
+	sudo unzip ~/Downloads/RegRipper.zip -d /opt/
+	sudo mv /opt/DVD/ /opt/RegRipper
+	sudo chmod +x /opt/RegRipper/rr.pl 
+	sudo chmod +x /opt/RegRipper/rip.pl
+	sudo ln -s /opt/RegRipper/rr.pl  $pth/rr.pl
+	sudo ln -s /opt/RegRipper/rip.pl  $pth/rip.pl
+
+	echo "DOING: volatility"
+	sudo svn checkout http://volatility.googlecode.com/svn/trunk/ /opt/volatility
+	sudo chmod +x /opt/volatility/vol.py
+	sudo ln -s /opt/volatility/vol.py $pth/vol.py
+
+	echo "DOING: Network Miner"
+	sudo wget sourceforge.net/projects/networkminer/files/latest -O ~/Downloads/NetworkMiner.zip
+	sudo unzip ~/Downloads/NetworkMiner.zip -d /opt/
+	sudo mv /opt/NetworkMiner*/ /opt/NetworkMiner
+	sudo chmod +x /opt/NetworkMiner/NetworkMiner.exe
+	sudo chmod -R go+w /opt/NetworkMiner/AssembledFiles/
+	sudo chmod -R go+w /opt/NetworkMiner/Captures/
+	sudo ln -s /opt/NetworkMiner/NetworkMiner.exe $pth/NetworkMiner
+	echo "Run 'sudo mono networkMiner'"
+
+	echo -e "DOING: Other WGETs, will be in '~/Downloads'"
+	# Slowloris
+	wget http://ha.ckers.org/slowloris/slowloris.pl -O ~/Downloads/slowloris.pl
+	# hulk :: http://packetstormsecurity.com/files/download/112856/hulk.zip
+	wget http://dl.packetstormsecurity.net/DoS/hulk.zip -O ~/Downloads/hulk.zip
+	# zaproxy
+	wget http://zaproxy.googlecode.com/files/ZAP_2.1.0_Linux.tar.gz -O ~/Downloads/zaproxy.tar.gz
+	# hostapd
+	wget http://w1.fi/releases/hostapd-x.y.z.tar.gz -O ~/Downloads/hostapd.tar.gz
+}
+
+wraps() {
+	
+	for i in wrappers/*
+	do 
+		echo -e "\n********************** $i *****************************"
+		cat $i
+	done
+}
+
+helpMe() {
+   echo -e "Linux installation script\nUsage:\n
+	-a	All Installs
+	-aD 	Developer Tools
+	-aW	Wallpapers
+	-aT	Tools
+	-aU 	Apt update & clean
+	-d 	List Dependencies
+	-g 	GitHub
+	-h 	Help
+	-m 	machn1k scripts (Git is required)
+	-mS 	Metasploit Installation (requires MSF install.Run)
+	-o 	Install other packages
+	"
+}
+
+if [ $arg = "-h" ]; then
+   helpMe
+elif [ $arg = "-d" ]; then
+   deps
+elif [ $arg = "-w" ];then
+   wraps
+fi

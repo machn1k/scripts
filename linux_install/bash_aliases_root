@@ -1,0 +1,61 @@
+### BASH_ALIASES_ROOT ##########################################################
+# LINUX COLORIZED
+alias ls='ls --color=auto'
+alias ll='ls -l --color=auto'
+alias ll='ls -la --color=auto'
+alias l.='ls -d .* --color=auto'
+
+# Shortcuts
+alias cl='clear'
+alias h='history'
+alias j='jobs -l'
+alias ..='cd ..'
+alias vi='vim'
+
+# Power
+alias restart='shutdown -r now'
+alias power='poweroff'
+
+alias sha1='openssl sha1'
+alias md5='openssl md5'
+alias ping='ping -c 3'
+alias webhead='curl -I'
+alias mount='mount |column -t'
+alias tcpdump='tcpdump -i eth0'
+
+###############################################################################
+# SYSINFO
+alias meminfo='free -m -l -t'
+alias cpuinfo='lscpu'
+
+### TOP MEM EATING PROCESSES
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+### TOP CPU EATING PROCESSES
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+## get GPU ram on desktop / laptop## 
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+###############################################################################
+# NETSTAT
+alias listen='netstat -l'
+alias ports='netstat -tulanp'
+alias routing='netstat -r'
+alias runwhere='netstat -ap | grep'
+alias nterfaces='netstat -i'
+
+###############################################################################
+# UPDATES
+alias update='apt-get update --yes && apt-get upgrade --yes'
+alias clean='apt-get auto clean --yes && apt-get auto remove --yes'
+
+# IPTABLES
+alias ipt='sudo /sbin/iptables'
+### Display all rules
+alias iptlist='/sbin/iptables -L -n -v --line-numbers'
+alias iptlistin='/sbin/iptables -L INPUT -n -v --line-numbers'
+alias iptlistout='/sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlistfw='/sbin/iptables -L FORWARD -n -v --line-numbers'
+alias firewall='iptlist'

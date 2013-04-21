@@ -108,10 +108,20 @@ installPackages() {
 	sudo apt-get update --yes && sudo apt-get upgrade --yes
 	
 	# Wallpapers
-	sudo apt-get install ubuntu-wallpapers-karmic ubuntu-wallpapers-lucid ubuntu-wallpapers-maverick ubuntu-wallpapers-natty ubuntu-wallpapers-oneiric ubuntu-wallpapers-precise
+	sudo apt-get install ubuntu-wallpapers-karmic ubuntu-wallpapers-lucid ubuntu-wallpapers-maverick ubuntu-wallpapers-natty ubuntu-wallpapers-oneiric ubuntu-wallpapers-precise --yes
 
-	echo "DOING: apt-get"
-	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dhcp3-server dsniff ettercap-graphical foremost gimp git glade hping3 htop hydra-gtk john macchanger-gtk medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
+	# Developer Tools
+	sudo apt-get install anjuta glade devhelp --yes
+	sudo apt-get install gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse --yes
+	# Python interface
+	sudo apt-get install python python-gobject
+	# C
+	sudo apt-get install libgtk-3-dev libgstreamer0.10-dev libclutter-1.0-dev libwebkitgtk-3.0-dev libgda-5.0-dev
+	# C Documentation
+	sudo apt-get install libgtk-3-doc gstreamer0.10-doc libclutter-1.0-doc libgda-5.0-doc
+
+
+	sudo apt-get install aircrack-ng argus-client bless bleachbit chkrootkit dhcp3-server dsniff ettercap-graphical foremost gimp git hping3 htop hydra-gtk john macchanger-gtk medusa mono-complete nmap openssl ophcrack ophcrack-cli p0f p7zip python-dev python-scapy ruby1.9.1 ruby-bundler rubygems rake-compiler scalpel sleuthkit sslstrip subversion tcpdump tcpflow tcpxtract transmission vim w3af wireshark --yes
 	
 	# JustSniffer :: http://justniffer.sourceforge.net/
 	sudo add-apt-repository ppa:oreste-notelli/ppa 
