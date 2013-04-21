@@ -1,0 +1,66 @@
+# Display useful info
+echo -e "$sp
+UBUNTU LOGS
+/var/log/audit/audit.log
+
+MONITOR NETWORK / OPEN FILES
+$lsof ­i ­n | egrep 'COMMAND|LISTEN|UDP'
+
+PROCESSES
+$ ps aux | grep 'ssh'
+
+RUNNING SERVICES
+$ sysv­rc­conf ­­list | grep '$(whoami)'
+
+PACKET FLOODING PREVENTION
+$ net/ipv4/tcp_syncookies = 1
+
+$sp
+Find SUID & SGID files on the system
+$ sudo find / \( ­perm ­4000 ­o ­perm ­2000 \) $ sudo find / ­perm ­4000 ­o ­perm ­2000 chmod ­s [file]
+
+$sp
+PARTITIONING
+$ cat /dev/[mnt pt: tmp] 
+\t/tmp ext3 defaults,noexec,nodev 1 2
+\t/dev/[mnt pt: home] 
+\t/home ext3 defaults,nosuid,nodev 1 2 
+
+$sp
+ssh
+$ cat /etc/ssh/ssh_config | grep 'AllowGroups\|PermitRoot\|Protocol\|RSAAuthentication' | less
+$ vi /etc/ssh/ssh_config    # CLIENT
+$ vi /etc/ssh/sshd_config   # SERVER
+\t———— sshd_config File ———————————————————————————
+\tPermitRootLogin no
+\tPasswordAuthentication yes
+\tAllowGroups sshusers
+\tProtocol 2 
+\t——————————————————————————————————————— 
+
+$ /etc/init.d/ssh restart # Restart
+$ services sshd restart 
+
+KEYS  
+$ ssh­keygen -­t rsa ­-b 4096 -f ~/.ssh/rsa_key
+$ ssh­keygen ­-t dsa -­b 1024 -f ~/.ssh/dsa_key
+
+TESTING
+echo -e "$ ssh $(whoami)@localhost" | less
+
+SIMPLE PYTHON SERVER FOR TESTING
+$ python -m SimpleHTTPServer
+
+$sp
+# Disable IPv6: Requires Reboot
+$ cat /etc/modprobe.d/aliases |grep net­pf­10
+	#   alias net­pf­10 off ipv6
+
+$sp
+BLOCKLIST: http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz
+
+$sp
+## .bashrc, referencing alias file
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi

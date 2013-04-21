@@ -2,6 +2,26 @@
 
 arg=$1
 
+# Help Menu
+helpMe() {
+   echo -e "Linux installation script
+   	\n\tUSAGE:
+	-a 	All Installs
+	-aD 	Developer Tools
+	-aW	Wallpapers
+	-aT	Tools
+	-aU 	Apt update & clean
+	-d 	List Dependencies
+	-g 	GitHub
+	-h 	Help
+	-m 	machn1k scripts (Git is required)
+	-mS 	Metasploit Installation (requires MSF install.Run)
+	-o 	Install other packages
+	-w 	Show wrapper scripts
+
+	"
+}
+
 # Developer Tools
 aptDev() {
 
@@ -112,7 +132,41 @@ git() {
 	# If an error pops up for 'Gemfile.lock', vim it and provide permissions
 	# troubleshoot "do_sqlite3" with gem install do_sqlite3
 	
-} # End GIT
+}
+
+linuxParams() {
+   
+	groupadd admin
+	usermod -g admin $(whoami)
+
+	chown root:admin /bin/su
+	chmod 04750 /bin/su
+
+	# Securing History
+	chattr +I .bash_history
+	chattr +a .bash_history
+	chattr -­R +i /bin
+	chattr ­-R +i /sbin
+	chattr ­-R +i /boot
+	chattr ­-R +i /lib
+	chattr ­-R +i /usr
+
+	# Change permissions
+	chmod 700 /bin/ping
+	chmod 700 /usr/bin/who
+	chmod 700 /usr/bin/w
+	chmod 700 /usr/bin/locate
+	chmod 700 /usr/bin/whereis
+	chmod 700 /sbin/ifconfig
+	chmod 700 /sbin/ifdown
+	chmod 700 /bin/nano
+	chmod 700 /usr/bin/vi
+	chmod 700 /usr/bin/which 
+	chmod 700 /usr/bin/gcc
+	chmod 700 /usr/bin/make
+	chmod 700 /usr/bin/apt*
+	chmod 700 /usr/bin/wget
+}
 
 machn1k() {
 
@@ -130,6 +184,24 @@ msf() {
 	sudo sh ~/Downloads/metasploit*
 }
 
+ntp () {
+    	
+	#Install NTP, activate it as a service
+	sudo apt-­get install ntp --yes
+	chkconfig ntpd on
+
+	echo -e "Editing configuration file"
+	sudo echo -e "server 0.north­america.pool.ntp.org
+	server 1.north­america.pool.ntp.org
+	server 2.north­america.pool.ntp.org
+	server 3.north­america.pool.ntp.org" >> /etc/ntp.conf
+
+	sudo /etc/init.d/ntp start
+
+	#IPtables: Accept UDP connections from NTP
+	sudo iptables ­I INPUT ­p udp ­­dport 123 ­j ACCEPT
+	sudo iptables ­I OUTPUT ­p udp ­­sport 123 ­j ACCEPT
+}
 
 other() {
 
@@ -169,6 +241,11 @@ other() {
 	wget http://w1.fi/releases/hostapd-x.y.z.tar.gz -O ~/Downloads/hostapd.tar.gz
 }
 
+sshConf() {
+	
+	echo "SSH config to come."
+}
+
 wraps() {
 	
 	for i in wrappers/*
@@ -176,22 +253,6 @@ wraps() {
 		echo -e "\n********************** $i *****************************"
 		cat $i
 	done
-}
-
-helpMe() {
-   echo -e "Linux installation script\nUsage:\n
-	-a	All Installs
-	-aD 	Developer Tools
-	-aW	Wallpapers
-	-aT	Tools
-	-aU 	Apt update & clean
-	-d 	List Dependencies
-	-g 	GitHub
-	-h 	Help
-	-m 	machn1k scripts (Git is required)
-	-mS 	Metasploit Installation (requires MSF install.Run)
-	-o 	Install other packages
-	"
 }
 
 if [ $arg = "-h" ]; then

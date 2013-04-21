@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Build a linux update script for GitHub
+
+cd /opt/set && sudo git pull
+cd /opt/recon-ng && sudo git pull
+cd /opt/BeEF && sudo git pull
+cd /opt/sqlmap && sudo git pull
+#cd /opt/w3af && sudo git pull
+
+sudo gem update
